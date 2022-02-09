@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { PuppeteerHelperService } from '../core/services/puppeteer/puppeteer-helper.service';
 
 @Component({
   selector: 'app-home',
@@ -8,10 +8,9 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private puppeteer:PuppeteerHelperService) { }
 
-  ngOnInit(): void {
-    console.log('HomeComponent INIT');
+  async ngOnInit() {
   }
-
+  
 }

@@ -1,19 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { HomeRoutingModule } from './home-routing.module';
-
 import { HomeComponent } from './home.component';
-import { SharedModule } from '../shared/shared.module';
 import { MaterialUiFrameworkModule } from '../core/material-ui-framework.module';
+import { HomeRoutes } from './home.routing';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  declarations: [HomeComponent],
   imports: [
-    CommonModule, 
-    SharedModule, 
-    HomeRoutingModule,
-    MaterialUiFrameworkModule
-  ]
+    CommonModule,
+    HomeRoutes,
+    MaterialUiFrameworkModule,
+    SharedModule
+  ],
+  declarations: [HomeComponent]
 })
-export class HomeModule {}
+export class HomeModule { }

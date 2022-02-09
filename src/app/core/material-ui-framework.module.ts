@@ -1,17 +1,20 @@
 import { NgModule } from "@angular/core";
 import { MatButtonModule } from '@angular/material/button';
 import { MatSliderModule } from '@angular/material/slider';
-
-
-
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatMenuModule } from '@angular/material/menu';
 @NgModule({
     imports: [
         MatButtonModule,
-        MatSliderModule
+        MatSliderModule,
+        MatGridListModule,
+        MatMenuModule
     ],
     exports: [
         MatButtonModule,
-        MatSliderModule
+        MatSliderModule,
+        MatGridListModule,
+        MatMenuModule
     ]
 })
 export class MaterialUiFrameworkModule { }

@@ -1,31 +1,24 @@
-<!-- <div class="container">
-  <h1 class="title">
-    {{ 'PAGES.HOME.TITLE' | translate }}
-  </h1>
+<!-- <mat-grid-list cols="4" rowHeight="100px" gutterSize="25px">
+  <mat-grid-tile
+      *ngFor="let tile of tiles"
+      [colspan]="tile.cols"
+      [rowspan]="tile.rows"
+      [style.background]="tile.color">
+    {{tile.text}}
+    <mat-grid-tile-header>fdsafdsa</mat-grid-tile-header>
+    <mat-grid-tile-footer>fdsfdssdaf</mat-grid-tile-footer>
+  </mat-grid-tile>
+</mat-grid-list> -->
 
-  <a routerLink="/detail">{{ 'PAGES.HOME.GO_TO_DETAIL' | translate }}</a>
-</div> -->
+<div class="container">
+  <!-- <div class="container mx-auto">
+    header menu
+   </div> -->
+   fdsa
+</div>
 
-<mat-slider min="1" max="100" step="1" value="50"></mat-slider>
-<section>
-  <div class="example-label">Basic</div>
-  <div class="example-button-row">
-    <button mat-button>Basic</button>
-    <button mat-button color="primary">Primary</button>
-    <button mat-button color="accent">Accent</button>
-    <button mat-button color="warn">Warn</button>
-    <button mat-button disabled>Disabled</button>
-    <a mat-button href="https://www.google.com/" target="_blank">Link</a>
-  </div>
-</section>
-<section>
-  <div class="example-label">Raised</div>
-  <div class="example-button-row">
-    <button mat-raised-button>Basic</button>
-    <button mat-raised-button color="primary">Primary</button>
-    <button mat-raised-button color="accent">Accent</button>
-    <button mat-raised-button color="warn">Warn</button>
-    <button mat-raised-button disabled>Disabled</button>
-    <a mat-raised-button href="https://www.google.com/" target="_blank">Link</a>
-  </div>
-</section>
+<mat-grid-list cols="24">
+  <mat-grid-tile colspan="24">1</mat-grid-tile>
+  <mat-grid-tile colspan="3">2</mat-grid-tile>
+  <mat-grid-tile colspan="20">3</mat-grid-tile>
+</mat-grid-list>
