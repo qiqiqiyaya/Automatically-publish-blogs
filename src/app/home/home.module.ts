@@ -4,13 +4,15 @@ import { HomeComponent } from './home.component';
 import { MaterialUiFrameworkModule } from '../core/material-ui-framework.module';
 import { HomeRoutes } from './home.routing';
 import { SharedModule } from '../shared/shared.module';
+import { LayoutModule } from '../layout/layout.module';
 
 @NgModule({
   imports: [
     CommonModule,
     HomeRoutes,
     MaterialUiFrameworkModule,
-    SharedModule
+    SharedModule,
+    LayoutModule,
   ],
   declarations: [HomeComponent]
 })

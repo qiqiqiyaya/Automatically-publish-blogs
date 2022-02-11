@@ -1,24 +1,71 @@
-<!-- <mat-grid-list cols="4" rowHeight="100px" gutterSize="25px">
-  <mat-grid-tile
-      *ngFor="let tile of tiles"
-      [colspan]="tile.cols"
-      [rowspan]="tile.rows"
-      [style.background]="tile.color">
-    {{tile.text}}
-    <mat-grid-tile-header>fdsafdsa</mat-grid-tile-header>
-    <mat-grid-tile-footer>fdsfdssdaf</mat-grid-tile-footer>
-  </mat-grid-tile>
-</mat-grid-list> -->
+<div class="w-screen h-screen flex flex-col">
+  <div class="w-full h-16 text-center">这里是头</div>
+  <div class="flex flex-grow">
+    <div class="w-56 h-full">
 
-<div class="container">
-  <!-- <div class="container mx-auto">
-    header menu
-   </div> -->
-   fdsa
+      <app-sidenav-menu></app-sidenav-menu>
+
+    </div>
+    <div class="flex-auto  h-full bg-amber-200">
+      <section>
+        <div class="example-label">Raised</div>
+        <div class="example-button-row">
+          <button mat-raised-button>Basic</button>
+          <button mat-raised-button color="primary">Primary</button>
+          <button mat-raised-button color="accent">Accent</button>
+          <button mat-raised-button color="warn">Warn</button>
+          <button mat-raised-button disabled>Disabled</button>
+          <a mat-raised-button href="https://www.google.com/" target="_blank">Link</a>
+        </div>
+      </section>
+    </div>
+  </div>
 </div>
+<!-- 
+<div class="sidebar-container">
+  <mat-toolbar color="primary" class="sidebar-toolbar">
+    <button mat-icon-button (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1 class="sidebar-app-name">Sidenav App</h1>
+    321321
+  </mat-toolbar>
+  <mat-sidenav-container class="sidebar-sidenav-container">
+    <mat-sidenav #snav mode="side" fixedTopGap="56" opened="true">
+      fdsafdsa
+    </mat-sidenav>
+    <mat-sidenav-content class="router-container">
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>  -->
 
-<mat-grid-list cols="24">
-  <mat-grid-tile colspan="24">1</mat-grid-tile>
-  <mat-grid-tile colspan="3">2</mat-grid-tile>
-  <mat-grid-tile colspan="20">3</mat-grid-tile>
-</mat-grid-list>
+<!-- 
+<mat-nav-list class="side-navnar">
+  <ng-container *ngFor="let menu of menuList | async; index as i;">
+      <ng-container [ngTemplateOutlet]="menu.children ?  childMenu : parentMenu"
+          [ngTemplateOutletContext]="{menu:menu}">
+      </ng-container>
+  </ng-container>
+</mat-nav-list>
+
+<ng-template #parentMenu let-menu="menu">
+  <mat-list-item [routerLink]="menu.routerLink" routerLinkActive="is-active" [routerLinkActiveOptions]="{exact:
+      true}">
+      <mat-icon>{{menu.icon}}</mat-icon> {{menu.text}}
+  </mat-list-item>
+</ng-template> 
+
+<ng-template #childMenu let-menu="menu">
+  <mat-expansion-panel [class.mat-elevation-z0]="true">
+      <mat-expansion-panel-header>
+          <mat-icon mat-list-icon>{{menu.icon}}</mat-icon>{{menu.text}}
+      </mat-expansion-panel-header>
+      <mat-nav-list>
+          <mat-list-item [routerLink]="submenu.routerLink" *ngFor="let submenu of menu.children" routerLinkActive="is-active" [routerLinkActiveOptions]="{exact:
+              true}">
+              <mat-icon>{{submenu.icon}}</mat-icon> {{submenu.text}}
+          </mat-list-item>
+      </mat-nav-list>
+  </mat-expansion-panel>
+</ng-template>  -->
