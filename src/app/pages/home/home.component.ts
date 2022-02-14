@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { PuppeteerHelperService } from '../core/services/puppeteer/puppeteer-helper.service';
+import { PuppeteerHelperService } from '../../core/services/puppeteer/puppeteer-helper.service';
 
 
 @Component({

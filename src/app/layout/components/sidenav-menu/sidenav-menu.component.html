@@ -1,4 +1,4 @@
-<mat-nav-list class="side-navnar">
+<mat-nav-list class="side-navnar" role="navigation">
   <ng-container *ngFor="let menu of menuList | async; index as i;">
       <ng-container [ngTemplateOutlet]="menu.children ?  childMenu : parentMenu"
           [ngTemplateOutletContext]="{menu:menu}">

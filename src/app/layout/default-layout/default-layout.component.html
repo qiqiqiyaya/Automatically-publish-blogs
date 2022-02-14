@@ -1,0 +1,25 @@
+
+<div class="w-screen h-screen flex flex-col">
+  <div class="w-full h-16 text-center">
+    <app-header></app-header>
+  </div>
+  <div class="flex flex-grow">
+    <div class="w-56 h-full">
+      <app-sidenav-menu></app-sidenav-menu>
+    </div>
+    <div class="flex-auto  h-full bg-amber-200">
+      <router-outlet></router-outlet>
+      <section>
+        <div class="example-label">Raised</div>
+        <div class="example-button-row">
+          <button mat-raised-button>Basic</button>
+          <button mat-raised-button color="primary">Primary</button>
+          <button mat-raised-button color="accent">Accent</button>
+          <button mat-raised-button color="warn">Warn</button>
+          <button mat-raised-button disabled>Disabled</button>
+          <a mat-raised-button href="https://www.google.com/" target="_blank">Link</a>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

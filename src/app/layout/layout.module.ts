@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SidenavMenuComponent } from './sidenav-menu/sidenav-menu.component';
+import { SidenavMenuComponent } from './components/sidenav-menu/sidenav-menu.component';
 import { MaterialUiFrameworkModule } from '../core/material-ui-framework.module';
 import { RouterModule } from '@angular/router';
+import { DefaultLayoutComponent } from './default-layout/default-layout.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   imports: [
@@ -11,10 +13,12 @@ import { RouterModule } from '@angular/router';
     RouterModule
   ],
   declarations: [
-    SidenavMenuComponent
+    DefaultLayoutComponent,
+    SidenavMenuComponent,
+    HeaderComponent,
   ],
   exports:[
-    SidenavMenuComponent
+    DefaultLayoutComponent,
   ]
 })
 export class LayoutModule { }
