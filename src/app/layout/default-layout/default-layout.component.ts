@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Theme } from '../models/theme';
+import { ThemeService } from '../services/theme.service';
 
 @Component({
   selector: 'app-default-layout',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DefaultLayoutComponent implements OnInit {
 
-  constructor() { }
+  siderStyle: {} = {};
+
+  constructor(private theme: ThemeService) { }
 
   ngOnInit() {
+    this.theme.theme.subscribe(res => {
+      this.siderStyle = res.getSiderNavStyle()
+    })
   }
 
 }

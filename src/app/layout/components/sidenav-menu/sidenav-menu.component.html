@@ -1,28 +1,36 @@
 <mat-nav-list class="side-navnar" role="navigation">
-  <ng-container *ngFor="let menu of menuList | async; index as i;">
-      <ng-container [ngTemplateOutlet]="menu.children ?  childMenu : parentMenu"
-          [ngTemplateOutletContext]="{menu:menu}">
-      </ng-container>
-  </ng-container>
+    <ng-container *ngFor="let menu of menuList | async; index as i;">
+        <ng-container [ngTemplateOutlet]="menu.children ?  childMenu : parentMenu"
+            [ngTemplateOutletContext]="{menu:menu}">
+        </ng-container>
+    </ng-container>
 </mat-nav-list>
 
 <ng-template #parentMenu let-menu="menu">
-  <mat-list-item [routerLink]="menu.routerLink" routerLinkActive="is-active" [routerLinkActiveOptions]="{exact:
+    <mat-list-item [routerLink]="menu.routerLink" routerLinkActive="is-active" [routerLinkActiveOptions]="{exact:
       true}">
-      <mat-icon>{{menu.icon}}</mat-icon> {{menu.text}}
-  </mat-list-item>
-</ng-template> 
+        <mat-icon>{{menu.icon}}</mat-icon> {{menu.text}}
+    </mat-list-item>
+</ng-template>
 
 <ng-template #childMenu let-menu="menu">
-  <mat-expansion-panel [class.mat-elevation-z0]="true">
-      <mat-expansion-panel-header>
-          <mat-icon mat-list-icon>{{menu.icon}}</mat-icon>{{menu.text}}
-      </mat-expansion-panel-header>
-      <mat-nav-list>
-          <mat-list-item [routerLink]="submenu.routerLink" *ngFor="let submenu of menu.children" routerLinkActive="is-active" [routerLinkActiveOptions]="{exact:
+    <mat-expansion-panel [class.mat-elevation-z0]="true" class="sidenav-menu-expansion-panel" hideToggle
+        (opened)="menu.expansionIconExpand=true" (closed)="menu.expansionIconExpand=false">
+        <mat-expansion-panel-header class="sidenav-menu-expansion-panel-header">
+            <mat-panel-title>
+                <mat-icon mat-list-icon>{{menu.icon}}</mat-icon>{{menu.text}}
+            </mat-panel-title>
+            <mat-panel-description>
+                <mat-icon [style]="this.expansionIconStyle">{{menu.expansionIconExpand?"expand_less":"expand_more"}}
+                </mat-icon>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+            <mat-list-item [routerLink]="submenu.routerLink" *ngFor="let submenu of menu.children"
+                routerLinkActive="is-active" [routerLinkActiveOptions]="{exact:
               true}">
-              <mat-icon>{{submenu.icon}}</mat-icon> {{submenu.text}}
-          </mat-list-item>
-      </mat-nav-list>
-  </mat-expansion-panel>
-</ng-template> 
+                <mat-icon>{{submenu.icon}}</mat-icon> {{submenu.text}}
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-expansion-panel>
+</ng-template>

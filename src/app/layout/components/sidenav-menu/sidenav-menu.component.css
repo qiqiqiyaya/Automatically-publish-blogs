@@ -20,9 +20,8 @@
 }
 
 ::ng-deep  .mat-nav-list .is-active {
-    background-color: rgb(204, 204, 204)!important;
-    border-left     : 8px solid rgb(139, 137, 133);
-    width           : calc(100% - 8px)!important;;
+    background-color: #ebdcac6b!important;
+    border-left     : 8px solid #673ab7;
 }
 
 ::ng-deep  .mat-list-base {
@@ -30,5 +29,17 @@
 }
 
 ::ng-deep  .mat-nav-list .mat-list-item.is-active .mat-list-item-content {
-    padding: 0 8px;
+    padding-left: 8px;
+}
+
+.sidenav-menu-expansion-panel{
+    background:none;
+}
+
+::ng-deep .sidenav-menu-expansion-panel-header > .mat-expansion-indicator:after {
+    border-color: #000 !important;
+}
+::ng-deep .sidenav-menu-expansion-panel-header .mat-expansion-panel-header-description {
+    flex-grow: 0;
+    margin-right: 0;
 }
