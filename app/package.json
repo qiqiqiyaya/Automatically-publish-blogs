@@ -4,6 +4,7 @@
   "main": "main.js",
   "private": true,
   "dependencies": {
-    "puppeteer": "13.2.0"
+    "puppeteer": "13.2.0",
+    "@felipebutcher/node-os-info": "0.0.6"
   }
 }

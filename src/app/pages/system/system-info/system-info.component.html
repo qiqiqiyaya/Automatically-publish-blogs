@@ -1,0 +1,66 @@
+
+<div class="bg-white overflow-hidden sm:rounded-lg">
+  <div class="px-4 py-5 sm:px-6">
+    <h3 class="text-lg leading-6 font-medium text-gray-900">Sytem Information</h3>
+    <p class="mt-1 max-w-2xl text-sm text-gray-500">Detail Information about you computer.</p>
+  </div>
+  <div class="border-t border-gray-200">
+    <dl>
+      <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">Operating System Name</dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{this.type}}</dd>
+      </div>
+      <div class="bg-purple-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">Platform</dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{this.platform}}</dd>
+      </div>
+      <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">Architecture</dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{this.arch}}</dd>
+      </div>
+      <div class="bg-purple-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">Home Directory</dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{this.homeDir}}</dd>
+      </div>
+      <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">Temp Directory</dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{this.tmpDir}}</dd>
+      </div>
+      <div class="bg-purple-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">Host Name</dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{this.hostname}}</dd>
+      </div>
+    </dl>
+  </div>
+</div>
+<mat-divider [ngStyle]="this.dividerColorStyle" class="my-3"></mat-divider>
+<mat-grid-list cols="2" rowHeight="350px">
+  <mat-grid-tile colspan="2">
+    <div class="w-full h-full">
+      <button mat-button color="primary">Cpu</button>
+      <div class="line-chart-h">
+        <ngx-charts-line-chart [results]="this.cpuData" [xAxis]="true" [yAxis]="true" [yScaleMax]="100" [yScaleMin]="0"
+          [xAxisLabel]="'Time'" [timeline]="true"></ngx-charts-line-chart>
+      </div>
+    </div>
+
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <div class="w-full h-full">
+      <button mat-button color="primary">Disk</button>
+      <div class="line-chart-h">
+        <ngx-charts-line-chart [results]="this.diskData" [xAxis]="true" [yAxis]="true" [xAxisLabel]="'Time'"
+          [yScaleMax]="100" [yScaleMin]="0" [timeline]="true"></ngx-charts-line-chart>
+      </div>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <div class="w-full h-full">
+      <button mat-button color="primary">Memory</button>
+      <div class="line-chart-h">
+        <ngx-charts-line-chart [results]="this.memData" [xAxis]="true" [yAxis]="true" [xAxisLabel]="'Time'"
+          [yScaleMax]="100" [yScaleMin]="0" [timeline]="true"></ngx-charts-line-chart>
+      </div>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>

@@ -1,5 +1,4 @@
-
-<div class="w-screen h-screen flex flex-col">
+<div class="w-full h-full flex flex-col">
   <div class="w-full h-16 text-center">
     <app-header></app-header>
   </div>
@@ -7,8 +6,9 @@
     <div class="w-56 h-full" [style]="this.siderStyle">
       <app-sidenav-menu></app-sidenav-menu>
     </div>
-    <div class="flex-auto h-full p-3 bg-gray-50">
-      <div class="w-full h-full bg-white p-3">
+    <div class="flex-auto h-full p-3 bg-gray-50" #contentWrapper>
+      <div class="w-full h-full bg-white p-3 default-layout-content"
+        [ngStyle]="{height:(contentWrapper.offsetHeight-24)+'px'}">
         <router-outlet></router-outlet>
       </div>
     </div>

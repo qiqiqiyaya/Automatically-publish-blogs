@@ -8,20 +8,9 @@ import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
-
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
-    imports: [
-        MatButtonModule,
-        MatSliderModule,
-        MatGridListModule,
-        MatMenuModule,
-        MatIconModule,
-        MatListModule,
-        MatExpansionModule,
-        MatToolbarModule,
-        MatSidenavModule
-    ],
     exports: [
         MatButtonModule,
         MatSliderModule,
@@ -31,7 +20,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
         MatListModule,
         MatExpansionModule,
         MatToolbarModule,
-        MatSidenavModule
+        MatSidenavModule,
+        MatCardModule
     ]
 })
 export class MaterialUiFrameworkModule { }

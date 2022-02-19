@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { CupInfoComponent } from './cup-info.component';
+import { SystemInfoComponent } from './system-info.component';
 
 describe('CupInfoComponent', () => {
-  let component: CupInfoComponent;
-  let fixture: ComponentFixture<CupInfoComponent>;
+  let component: SystemInfoComponent;
+  let fixture: ComponentFixture<SystemInfoComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CupInfoComponent ]
+      declarations: [ SystemInfoComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CupInfoComponent);
+    fixture = TestBed.createComponent(SystemInfoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

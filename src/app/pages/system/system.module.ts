@@ -1,15 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CupInfoComponent } from './cup-info/cup-info.component';
+import { SystemInfoComponent } from './system-info/system-info.component';
 import { SystemRoutes } from './system.routing';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { MaterialUiFrameworkModule } from '../../core/material-ui-framework.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    SystemRoutes
+    SystemRoutes,
+    NgxChartsModule,
+    MaterialUiFrameworkModule
   ],
   declarations: [
-    CupInfoComponent
+    SystemInfoComponent
   ]
 })
 export class SystemModule { }

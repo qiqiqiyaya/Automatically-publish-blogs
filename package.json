@@ -55,6 +55,8 @@
     "@angular/platform-browser": "13.0.1",
     "@angular/platform-browser-dynamic": "13.0.1",
     "@angular/router": "13.0.1",
+    "@felipebutcher/node-os-info": "0.0.6",
+    "@swimlane/ngx-charts": "20.0.1",
     "material-design-icons": "3.0.1",
     "puppeteer": "13.2.0",
     "rxjs": "7.4.0",
