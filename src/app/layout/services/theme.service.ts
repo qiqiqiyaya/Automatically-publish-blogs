@@ -19,7 +19,7 @@ export class ThemeService implements OnDestroy {
   private _them: Theme = new Theme({
     name:'deeppurple-amber',
     primaryColor:'#673ab7',
-    siderNavBgColor:'#FFEDDB'
+    siderNavBgColor:'#faf5ff'
   });
   private $defaultThemeColor = new BehaviorSubject<Theme>(this._them);
 

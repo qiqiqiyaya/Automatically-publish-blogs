@@ -1,6 +1,7 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { Observable, share, Subject, Subscription, timer } from 'rxjs';
 import * as os from 'os';
+import { Configuration } from '../../configuration';
 
 /**
  * 局部服务
@@ -14,12 +15,14 @@ export class OsInfoService implements OnDestroy {
   private _mem: Subject<number>;
 
   constructor() {
-    this.osInfo = window.require("@felipebutcher/node-os-info");
-    this.os = window.require("os");
+    if (Configuration.isElectron) {
+      this.osInfo = window.require("@felipebutcher/node-os-info");
+      this.os = window.require("os");
 
-    this._cpu = new Subject<number>();
-    this._disk = new Subject<number>();
-    this._mem = new Subject<number>();
+      this._cpu = new Subject<number>();
+      this._disk = new Subject<number>();
+      this._mem = new Subject<number>();
+    }
   }
 
   /**
@@ -58,9 +61,9 @@ export class OsInfoService implements OnDestroy {
      * must unsubscribe first
      */
     if (this._timer) this._timer.unsubscribe();
-    this._cpu.unsubscribe();
-    this._mem.unsubscribe();
-    this._disk.unsubscribe();
+    if (this._cpu) this._cpu.unsubscribe();
+    if (this._mem) this._mem.unsubscribe();
+    if (this._disk) this._disk.unsubscribe();
   }
 
   get cpu(): Observable<number> {
@@ -84,7 +87,7 @@ export class OsInfoService implements OnDestroy {
     /**
      * 每2秒执行一次
      */
-    this._timer = timer(0, 3500).subscribe(d => {
+    this._timer = timer(1500, 3500).subscribe(d => {
       this.osInfo.cpu((res) => {
         this._cpu.next(Math.round(res * 100));
       });

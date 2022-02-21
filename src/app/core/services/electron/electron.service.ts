@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 import { ipcRenderer, webFrame } from 'electron';
 import * as childProcess from 'child_process';
 import * as fs from 'fs';
+import { Configuration } from '../../configuration';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class ElectronService {
 
   constructor() {
     // Conditional imports
-    if (this.isElectron) {
+    if (Configuration.isElectron) {
       this.ipcRenderer = window.require('electron').ipcRenderer;
       this.webFrame = window.require('electron').webFrame;
 
@@ -36,9 +37,5 @@ export class ElectronService {
       // ipcRenderer.invoke can serve many common use cases.
       // https://www.electronjs.org/docs/latest/api/ipc-renderer#ipcrendererinvokechannel-args
     }
-  }
-
-  get isElectron(): boolean {
-    return !!(window && window.process && window.process.type);
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { Configuration } from '../../../core/configuration';
 import { OsInfoService } from '../../../core/services/system/os-info.service';
 import { ThemeService } from '../../../layout/services/theme.service';
 
@@ -35,30 +36,43 @@ export class SystemInfoComponent implements OnInit, OnDestroy {
   type: string;
   constructor(public osInfo: OsInfoService,
     private theme: ThemeService) {
-    this.arch = this.osInfo.arch;
-    this.homeDir = this.osInfo.homeDir;
-    this.platform = this.osInfo.platform;
-    this.hostname = this.osInfo.hostname;
-    this.tmpDir = this.osInfo.tmpDir;
-    this.type = this.osInfo.type;
   }
 
   ngOnDestroy(): void {
-    this.unColorStyle.unsubscribe();
-    this.unCpuData.unsubscribe();
-    this.unDiskData.unsubscribe();
-    this.unMemData.unsubscribe();
+    if (Configuration.isElectron) {
+      this.unColorStyle.unsubscribe();
+      this.unCpuData.unsubscribe();
+      this.unDiskData.unsubscribe();
+      this.unMemData.unsubscribe();
+    }
   }
 
   ngOnInit() {
     this.unColorStyle = this.theme.theme.subscribe(res => {
       this.dividerColorStyle['border-top-color'] = res.primaryColor;
     });
-    this.osInfo.start();
-    this.cpuData.push({ name: 'Cpu Usage', series: [{ "name": "0", "value": 0 }] });
-    this.diskData.push({ name: 'Disk Usage', series: [{ "name": "0", "value": 0 }] });
-    this.memData.push({ name: 'Memory Usage', series: [{ "name": "0", "value": 0 }] });
-    this.getChartData();
+
+    setTimeout(() => {
+      this.init();
+    }, 500);
+  }
+
+  init(){
+    if (Configuration.isElectron) {
+
+      this.arch = this.osInfo.arch;
+      this.homeDir = this.osInfo.homeDir;
+      this.platform = this.osInfo.platform;
+      this.hostname = this.osInfo.hostname;
+      this.tmpDir = this.osInfo.tmpDir;
+      this.type = this.osInfo.type;
+
+      this.osInfo.start();
+      this.cpuData.push({ name: 'Cpu Usage', series: [{ "name": "0", "value": 0 }] });
+      this.diskData.push({ name: 'Disk Usage', series: [{ "name": "0", "value": 0 }] });
+      this.memData.push({ name: 'Memory Usage', series: [{ "name": "0", "value": 0 }] });
+      this.getChartData();
+    }
   }
 
   getChartData() {
