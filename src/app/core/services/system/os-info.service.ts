@@ -89,12 +89,15 @@ export class OsInfoService implements OnDestroy {
      */
     this._timer = timer(1500, 3500).subscribe(d => {
       this.osInfo.cpu((res) => {
+        if (this._cpu.closed) return;
         this._cpu.next(Math.round(res * 100));
       });
       this.osInfo.disk((res) => {
+        if (this._disk.closed) return;
         this._disk.next(Math.round(res * 100))
       });
       this.osInfo.mem((res) => {
+        if (this._mem.closed) return;
         this._mem.next(Math.round(res * 100))
       });
     });

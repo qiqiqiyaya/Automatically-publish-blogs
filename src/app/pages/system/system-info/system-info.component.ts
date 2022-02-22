@@ -15,11 +15,11 @@ export class SystemInfoComponent implements OnInit, OnDestroy {
   colorSchem = {
     domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
   };
-  cpuData: LineChartDataFormat[] = [];
+  cpuData: LineChartDataFormat[] = [{ name: 'Cpu Usage', series: [{ "name": "0", "value": 0 }] }];
   unCpuData: Subscription;
-  diskData: LineChartDataFormat[] = [];
+  diskData: LineChartDataFormat[] = [{ name: 'Disk Usage', series: [{ "name": "0", "value": 0 }] }];
   unDiskData: Subscription;
-  memData: LineChartDataFormat[] = [];
+  memData: LineChartDataFormat[] = [{ name: 'Memory Usage', series: [{ "name": "0", "value": 0 }] }];
   unMemData: Subscription;
 
   dividerColorStyle = {
@@ -68,9 +68,6 @@ export class SystemInfoComponent implements OnInit, OnDestroy {
       this.type = this.osInfo.type;
 
       this.osInfo.start();
-      this.cpuData.push({ name: 'Cpu Usage', series: [{ "name": "0", "value": 0 }] });
-      this.diskData.push({ name: 'Disk Usage', series: [{ "name": "0", "value": 0 }] });
-      this.memData.push({ name: 'Memory Usage', series: [{ "name": "0", "value": 0 }] });
       this.getChartData();
     }
   }

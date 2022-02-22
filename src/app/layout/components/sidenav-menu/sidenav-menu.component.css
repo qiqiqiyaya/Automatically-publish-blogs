@@ -20,8 +20,9 @@
 }
 
 ::ng-deep  .mat-nav-list .is-active {
-    background-color: #ebdcac6b!important;
-    border-left     : 8px solid #673ab7;
+    background-color: #bca3e7!important;
+    padding-left: 8px !important;
+    /* border-left     : 8px solid #673ab7; */
 }
 
 ::ng-deep  .mat-list-base {
@@ -30,7 +31,7 @@
 
 ::ng-deep  .mat-nav-list .mat-list-item.is-active .mat-list-item-content {
     padding-left: 8px;
-}
+} 
 
 .sidenav-menu-expansion-panel{
     background:none;
@@ -42,4 +43,11 @@
 ::ng-deep .sidenav-menu-expansion-panel-header .mat-expansion-panel-header-description {
     flex-grow: 0;
     margin-right: 0;
+}
+
+.side-navnar .mat-expansion-panel {
+    border-radius: 0px !important;
+}
+::ng-deep .side-navnar .mat-expansion-panel .mat-nav-list .mat-list-item.is-active .mat-list-item-content{
+    padding-left: 24px !important;
 }
