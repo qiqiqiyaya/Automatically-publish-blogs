@@ -1,3 +1,11 @@
-<p>
-  overview works!
-</p>
+<mat-form-field appearance="fill" style="display: inline;">
+  <mat-label>Choose a Video Source</mat-label>
+  <mat-select [(value)]="selectedValue" [required]="true" (selectionChange)="changeSource()">
+
+    <mat-option>Close Video</mat-option>
+    <ng-container *ngFor="let item of selectData">
+      <mat-option value="{{item.value}}" [title]="item.label">{{item.label}}</mat-option>
+    </ng-container>
+  </mat-select>
+</mat-form-field>
+<video autoplay #camera> </video>
