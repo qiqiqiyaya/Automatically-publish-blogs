@@ -54,7 +54,7 @@ export class SystemInfoComponent implements OnInit, OnDestroy {
 
     setTimeout(() => {
       this.init();
-    }, 500);
+    }, 1000);
   }
 
   init(){

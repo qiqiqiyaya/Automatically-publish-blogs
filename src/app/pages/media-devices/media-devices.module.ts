@@ -4,6 +4,7 @@ import { MediaDevicesComponent } from './media-devices.component';
 import { MediaDevicesRoutes } from './media-devices.routing';
 import { MaterialUiFrameworkModule } from '../../core/material-ui-framework.module';
 import { OverviewComponent } from './overview/overview.component';
+import { CaptureScreenComponent } from './capture-screen/capture-screen.component';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { OverviewComponent } from './overview/overview.component';
   ],
   declarations: [
     MediaDevicesComponent,
-    OverviewComponent
+    OverviewComponent,
+    CaptureScreenComponent
   ]
 })
 export class MediaDevicesModule { }

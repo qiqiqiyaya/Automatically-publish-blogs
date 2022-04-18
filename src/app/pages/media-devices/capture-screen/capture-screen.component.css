@@ -1,0 +1,26 @@
+:host(app-capture-screen){
+    height: 100%;
+    width: 100%;
+    display: block;
+}
+.capture-screen-video{
+    height: calc(100% - 40px);
+    background-color: #fafafa;
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+}
+.capture-screen-title{
+    line-height: 40px;
+}
+/* .capture-screen-video video
+{
+    display:table;
+      margin:0 auto;
+} */
+.capture-screen-btn button{
+    margin-right: 8px;
+}
+.capture-screen-divider{
+    margin: 8px 0 !important;
+}

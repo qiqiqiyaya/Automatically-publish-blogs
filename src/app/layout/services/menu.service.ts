@@ -13,6 +13,7 @@ export class MenuService {
     new Menu("home","home",null,"/system/cup-info"),
     new Menu("Media Devices","important_devices",[
       new Menu("Overview","dashboard",null,"/media-devices/overview"),
+      new Menu("Capture Screen","tv",null,"/media-devices/capture-screen"),
     ]),
     new Menu("test","settings",null,"/test"),
     new Menu("system","computer",[

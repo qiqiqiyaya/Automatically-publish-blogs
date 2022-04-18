@@ -1,0 +1,33 @@
+<div class="flex h-full w-full">
+  <div class="flex-auto pr-2.5">
+    <div class="capture-screen-video">
+      <video autoplay #camera></video>
+    </div>
+    <div class="h-10" class="capture-screen-title">
+      <mat-label>{{this.selectedOption?this.selectedOption.label:''}}</mat-label>
+    </div>
+  </div>
+  <div class="flex-none w-64">
+    <form>
+      <mat-form-field appearance="outline" style="display: inline;">
+        <mat-label>Choose a Video Source</mat-label>
+        <mat-select [(value)]="selectedValue" [required]="true" (selectionChange)="changeSource()">
+
+          <mat-option>Close Video</mat-option>
+          <ng-container *ngFor="let item of selectData">
+            <mat-option value="{{item.value}}" [title]="item.label">{{item.label}}</mat-option>
+          </ng-container>
+        </mat-select>
+      </mat-form-field>
+      <mat-label>duration :</mat-label>{{ this.duration}}
+
+      <mat-divider class="capture-screen-divider"></mat-divider>
+      <div class="capture-screen-btn">
+        <button mat-raised-button [disabled]="!this.selectedOption|| isStart" type="button" color="primary"
+          (click)="start()">Record</button>
+        <button mat-stroked-button [disabled]="!this.selectedOption|| isStop" type="button"
+          (click)="stop()">Stop</button>
+      </div>
+    </form>
+  </div>
+</div>
