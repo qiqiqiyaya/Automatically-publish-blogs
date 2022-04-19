@@ -3,14 +3,15 @@ import { DesktopCapturer, DesktopCapturerSource, Dialog } from 'electron';
 import { Observable, share, Subject } from 'rxjs';
 import { Configuration } from '../../configuration';
 import { MaterIalSelectItem } from '../../../models/materIal-select';
-import { SourceConfiguration } from './source-configuration';
+import { ScreenSource } from './screen-source';
 import * as fs from 'fs';
+import { MediaRecorderContext } from './media-recorder-context';
 
 /**
  * 局部生命周期
  */
 @Injectable()
-export class OverviewService implements OnDestroy {
+export class RecordScreenService implements OnDestroy {
     protected desktopCapturer: DesktopCapturer;
     protected dialog: Dialog;
     protected fs: typeof fs;
@@ -26,6 +27,7 @@ export class OverviewService implements OnDestroy {
 
             const electron = window.require("electron");
             this.desktopCapturer = electron.desktopCapturer as DesktopCapturer;
+            debugger;
             this.dialog = electron.dialog as Dialog;
             this.fs = window.require('fs');
 
@@ -46,14 +48,11 @@ export class OverviewService implements OnDestroy {
         this._capturerSource.unsubscribe();
     }
 
-    private _sourceConfig: SourceConfiguration | null = null;
-    private _recordedChunks: Blob[] = [];
     /**
      * 选中需要监控的源
      * @param source 
      */
-    async changeSource(config: SourceConfiguration) {
-        this._sourceConfig = config;
+    async changeSource(config: ScreenSource) {
         const constraints = {
             audio: false,
             video: {
@@ -68,29 +67,15 @@ export class OverviewService implements OnDestroy {
         /* Create a Stream */
         const media = navigator.mediaDevices as any;
         const stream = await media.getUserMedia(constraints);
-        videoElement.srcObject = stream;
-        videoElement.play();
-
-        const options = { mimeType: 'video/webm; codecs=vp9' };
-        let mediaRecorder = new MediaRecorder(stream, options);
-
-        mediaRecorder.ondataavailable = this.videoStart;
-        mediaRecorder.onstop = this.videoStop;
+        return new MediaRecorderContext(stream, videoElement);
     }
 
-    private videoStart(ev: BlobEvent) {
-        if (this._sourceConfig && this._sourceConfig.onStart) this._sourceConfig.onStart(ev);
-        this._recordedChunks.push(ev.data);
-    }
-
-    private videoStop(ev: Event) {
-        if (this._sourceConfig && this._sourceConfig.onStop) this._sourceConfig.onStop(ev);
-
-        this.saveVideo();
-    }
-
-    private async saveVideo() {
-        const blob = new Blob(this._recordedChunks, {
+    /**
+     * 保存视频
+     * @param blobs 
+     */
+    async saveVideo(blobs: Blob[]) {
+        const blob = new Blob(blobs, {
             type: 'video/webm; codecs=vp9'
         });
 
@@ -101,10 +86,7 @@ export class OverviewService implements OnDestroy {
         });
 
         if (filePath) {
-            let callBack: () => void = () => { };
-            if (this._sourceConfig && this._sourceConfig.afterSaveFile) callBack = this._sourceConfig.afterSaveFile;
-
-            this.fs.writeFile(filePath, buffer, callBack);
+            this.fs.writeFile(filePath, buffer, () => { });
         }
     }
 }

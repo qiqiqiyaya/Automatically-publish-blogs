@@ -19,14 +19,22 @@
           </ng-container>
         </mat-select>
       </mat-form-field>
-      <mat-label>duration :</mat-label>{{ this.duration}} 11
+      <mat-label>duration :</mat-label>{{ this.duration}}
 
       <mat-divider class="capture-screen-divider"></mat-divider>
       <div class="capture-screen-btn">
         <button mat-raised-button [disabled]="!this.selectedOption|| isStart" type="button" color="primary"
           (click)="start()">Record</button>
-        <button mat-stroked-button [disabled]="!this.selectedOption|| isStop" type="button"
-          (click)="stop()">Stop</button>
+        <button mat-stroked-button [disabled]="!this.selectedOption|| isStop" type="button" (click)="stop()">Stop</button>
+      </div>
+      <mat-divider class="capture-screen-divider"></mat-divider>
+      <div class="capture-screen-btn">
+        <button mat-icon-button [disabled]="!this.selectedOption" type="button" (click)="save()">
+          <mat-icon>folder_special</mat-icon>
+        </button>
+        <button mat-icon-button [disabled]="!this.selectedOption" type="button" (click)="delete()">
+          <mat-icon>delete</mat-icon>
+        </button>
       </div>
     </form>
   </div>

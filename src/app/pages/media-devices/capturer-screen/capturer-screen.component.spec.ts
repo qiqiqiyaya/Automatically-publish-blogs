@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { CaptureScreenComponent } from './capture-screen.component';
+import { CapturerScreenComponent } from './capturer-screen.component';
 
 describe('CaptureScreenComponent', () => {
-  let component: CaptureScreenComponent;
-  let fixture: ComponentFixture<CaptureScreenComponent>;
+  let component: CapturerScreenComponent;
+  let fixture: ComponentFixture<CapturerScreenComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CaptureScreenComponent ]
+      declarations: [ CapturerScreenComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CaptureScreenComponent);
+    fixture = TestBed.createComponent(CapturerScreenComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

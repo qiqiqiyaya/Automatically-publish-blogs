@@ -1,26 +1,26 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { DesktopCapturerSource } from 'electron';
 import { MaterIalSelectItem } from '../../../models/materIal-select';
-import { OverviewService } from '../../../core/services/media-devices/overview.service';
-import { SourceConfiguration } from '../../../core/services/media-devices/source-configuration';
+import { RecordScreenService } from '../../../core/services/media-devices/record-screen.service';
+import { ScreenSource } from '../../../core/services/media-devices/screen-source';
 
 @Component({
   selector: 'app-overview',
   templateUrl: './overview.component.html',
   styleUrls: ['./overview.component.css'],
-  providers: [OverviewService]
+  providers: [RecordScreenService]
 })
 export class OverviewComponent implements OnInit {
 
   @ViewChild("camera") camera: ElementRef;
   selectedValue: string = "";
   selectData: MaterIalSelectItem<DesktopCapturerSource>[] = [];
-  constructor(private overview: OverviewService) { }
+  constructor(private overview: RecordScreenService) { }
 
   ngOnInit() {
   }
 
-  getConfig(): SourceConfiguration {
+  getConfig(): ScreenSource {
     const source = this.selectData.find(x => x.value === this.selectedValue).source;
     return {
       source: source,
