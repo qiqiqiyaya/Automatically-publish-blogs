@@ -26,9 +26,9 @@ export class RecordScreenService implements OnDestroy {
         if (Configuration.isElectron) {
 
             const electron = window.require("electron");
+            const remote = window.require("@electron/remote");
             this.desktopCapturer = electron.desktopCapturer as DesktopCapturer;
-            debugger;
-            this.dialog = electron.dialog as Dialog;
+            this.dialog = remote.dialog as Dialog;
             this.fs = window.require('fs');
 
             this.desktopCapturer.getSources({
@@ -78,7 +78,7 @@ export class RecordScreenService implements OnDestroy {
         const blob = new Blob(blobs, {
             type: 'video/webm; codecs=vp9'
         });
-
+        debugger;
         const buffer = Buffer.from(await blob.arrayBuffer());
         const { filePath } = await this.dialog.showSaveDialog({
             buttonLabel: 'Save video',

@@ -27,7 +27,6 @@ export class CapturerScreenComponent implements OnInit {
     private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
-
   }
 
   getSelectedOption(): MaterIalSelectItem<DesktopCapturerSource> {
@@ -79,21 +78,23 @@ export class CapturerScreenComponent implements OnInit {
   }
 
   async save() {
-    debugger;
-    if (this.videoContext) {
-      await this.recordScreenservice.saveVideo(this.videoContext.recordedChunks);
+    if (this.videoContext && this.videoContext.recordedChunks.length > 0) {
+      const filePath= await this.recordScreenservice.saveVideo(this.videoContext.recordedChunks);
+      this.openSnackBar(`Successfully saved.`);
       return;
     };
 
-    this._snackBar.open('Please record video first.', 'Undo', {
-      duration: 3000
-    });
+    this.openSnackBar('Please record video first.');
   }
 
   delete() {
     this.duration=" " + 0;
     this.beginTime = 0;
+    this.isStop = true;
+    this.isStart = false;
+    debugger;
     if (this.videoContext) this.videoContext.delete();
+    this.openSnackBar('The video is delete.');
   }
 
   formatDuration = (timestamp: number) => {
@@ -104,6 +105,14 @@ export class CapturerScreenComponent implements OnInit {
       second: Math.floor(timestamp / 1000) % 60,
     };
     return Object.entries(time).filter(val => val[1] != 0).map(([key, val]) => `${val} ${key}${val !== 1 ? 's' : ''}`).join('1');
+  }
+
+  openSnackBar(msg:string,label:string='') {
+    this._snackBar.open(msg, label, {
+      duration: 3000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+    });
   }
 }
 

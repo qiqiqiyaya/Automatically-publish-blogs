@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {
     "puppeteer": "13.2.0",
-    "@felipebutcher/node-os-info": "0.0.6"
+    "@felipebutcher/node-os-info": "0.0.6",
+    "@electron/remote": "2.0.8"
   }
 }

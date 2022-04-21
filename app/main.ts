@@ -1,7 +1,11 @@
-import { app, BrowserWindow, screen } from 'electron';
+import { app, BrowserWindow, screen, webContents } from 'electron';
 import * as path from 'path';
 import * as fs from 'fs';
 import * as url from 'url';
+import { initialize, enable as enableRemote } from "@electron/remote/main";
+
+/* starup Remote module */
+initialize();
 
 let win: BrowserWindow = null;
 const args = process.argv.slice(1),
@@ -24,7 +28,9 @@ function createWindow(): BrowserWindow {
       contextIsolation: false,  // false if you want to run e2e test with Spectron
     },
   });
-
+  
+  /* use this */
+  enableRemote(win.webContents);
 
   if (serve) {
     win.webContents.openDevTools();

@@ -2,6 +2,7 @@ export class MediaRecorderContext {
     private _mediaRecorder: MediaRecorder;
     private _recordedChunks: Blob[] = [];
     private _videoElement: HTMLVideoElement;
+    private isStop = true;
 
     constructor(stream: MediaStream, videoElement: HTMLVideoElement) {
         this._videoElement = videoElement;
@@ -19,15 +20,18 @@ export class MediaRecorderContext {
      * @param ev 
      */
     private recording = (ev: BlobEvent) => {
+        if (this.isStop) return;
         this._recordedChunks.push(ev.data);
     }
 
     start() {
+        this.isStop = false;
         this._videoElement.play();
     }
 
     stop() {
         this._videoElement.pause();
+        this.isStop = true;
     }
 
     delete() {
