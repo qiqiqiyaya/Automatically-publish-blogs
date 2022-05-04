@@ -19,6 +19,7 @@ export class MenuService {
     new Menu("system","computer",[
       new Menu("Cup Information","show_chart",null,"/system/cup-info"),
     ]),
+    new Menu("Esp32-Cam","tv",null,"/esp32-cam"),
   ];
   //#endregion
 
